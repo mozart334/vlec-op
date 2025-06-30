@@ -1,0 +1,258 @@
+/* === Reset & Body === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Orbitron', sans-serif;
+  background: radial-gradient(circle, #0a001a, #000);
+  color: white;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* === Sidebar === */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100vh;
+  background: #110022;
+  border-right: 2px solid #ff00cc;
+  padding: 30px 20px;
+  z-index: 999;
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.mozartvin {
+  font-size: 16px;
+  background: linear-gradient(45deg, red, blue, white, yellow, orange, purple,orange);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animateText 2s linear infinite;
+}
+@keyframes animateText {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+.nav-links {
+  list-style: none;
+  margin-top: 40px;
+}
+.nav-links li a {
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+  color: white;
+  transition: background 0.3s;
+}
+.nav-links li a.active,
+.nav-links li a:hover {
+  background: #ff00cc;
+  color: black;
+  border-radius: 6px;
+}
+
+/* === Main Layout === */
+main {
+  margin-left: 220px;
+  padding: 40px;
+}
+section {
+  padding: 250px 0; /* ✅ Jarak antar halaman */
+}
+
+/* === Beranda === */
+.welcome {
+  font-size: 50px;
+  text-align: center;
+  color: hotpink;
+  text-shadow: 0 0 10px #000, 0 0 20px #ff00cc;
+}
+.subtext {
+  text-align: center;
+  color: #aaa;
+  margin-top: 10px;
+}
+
+/* === Tentang Saya === */
+.tentang-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+  justify-content: center;
+}
+.tentang-foto {
+  width: 180px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px cyan;
+}
+.tentang-text {
+  max-width: 500px;
+  font-size: 16px;
+}
+
+/* === Orbit Skills === */
+.skills-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* atas, bukan tengah penuh */
+  min-height: 100vh;
+  padding-top: 80px;
+  gap: 40px; /* jarak antar elemen */
+}
+
+.orbit-container {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  border: 2px dashed rgba(255, 0, 255, 0.3); /* garis orbit */
+  animation: spinOrbit 20s linear infinite;
+  z-index: 1;
+}
+
+.center-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  box-shadow: 0 0 20px #ff00cc;
+  pointer-events: none;
+}
+
+.planet-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: rotate(var(--angle));
+  transform-origin: center;
+  pointer-events: none;
+}
+
+.planet {
+  width: 45px;
+  height: 45px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 140px); /* jarak dari pusat */
+  transform: translate(-50%, -50%);
+}
+
+
+
+/* Menentukan sudut masing-masing planet */
+.planet-wrapper:nth-child(2)  { transform: rotate(0deg); }
+.planet-wrapper:nth-child(3)  { transform: rotate(72deg); }
+.planet-wrapper:nth-child(4)  { transform: rotate(144deg); }
+.planet-wrapper:nth-child(5)  { transform: rotate(216deg); }
+.planet-wrapper:nth-child(6)  { transform: rotate(288deg); }
+
+@keyframes spinOrbit {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes rotateWrapper {
+  0%   { transform: rotate(var(--angle)); }
+  100% { transform: rotate(calc(var(--angle) + 360deg)); }
+}
+
+.text-skill {
+  margin-top: 30px;
+  text-align: center;
+}
+.text-skill h2 {
+  font-size: 28px;
+  color: #ff00cc;
+  text-shadow: 0 0 10px #ff00cc;
+}
+
+/* === Kontak === */
+.kontak-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 20px;
+  min-height: 100vh;
+  background: radial-gradient(circle at center, #1a002a, #000);
+}
+.kontak-container {
+  background: rgba(255, 255, 255, 0.06);
+  border: 2px solid #ff00cc;
+  border-radius: 16px;
+  padding: 40px 30px;
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 0 25px #ff00cc88;
+  backdrop-filter: blur(10px);
+}
+.kontak-container h2 {
+  font-size: 28px;
+  color: #ff00cc;
+  margin-bottom: 25px;
+  text-shadow: 0 0 8px #ff00cc;
+}
+.kontak-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+.kontak-icon {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  text-decoration: none;
+  background: linear-gradient(135deg, #ff00cc, #330066);
+  padding: 12px 20px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  width: 100%;
+  max-width: 320px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px #ff00cc55;
+}
+.kontak-icon:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 18px #ff00ccaa;
+}
+.kontak-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 5px white);
+}
+
+/* === Responsive Layout === */
+@media (max-width: 768px) {
+  section {
+    padding: 80px 20px;
+  }
+  main {
+    padding: 20px;
+  }
+}
